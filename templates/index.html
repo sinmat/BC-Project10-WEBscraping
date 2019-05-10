@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class = "container">
+        <div class = "jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p>
+                <a class = "btn btn-primary btn-lg" href='/scrape'>Scrape New Data</a>
+            </p> 
+        </div>
+
+        <!--Mars News-->
+        <div class = "row" id = "mars-news">
+            <div class = "col-md-12">
+                <h2>Latest Mars News</h2>
+                <h4>{{mars.news_title}}</h4>
+                <p>{{mars.news_paragraph}}</p>
+            </div>
+
+        </div> 
+
+        <!--Mars img and weather-->
+        <div class = "row" id = "mars-weather">
+            <div class = "col-md-8">
+                <h2>Featured Mars Images</h2>
+                <img src = "{{mars.featured_image}}" class="img-responsive">
+                <br>
+                <p>{{mars.news_paragraph}}</p>
+            </div>
+            <div class = "col-md-4">
+                <h2>Current weather at Mars</h2>
+                <p>{{mars.weather}}</p>
+                <h2>Mars Facts</h2>
+                <p>{{mars.facts|safe}}</p>
+            </div>
+
+        <div class = row>
+                <h4>Mars Hemisphere</h4>  
+            {% for hem in mars.hemisphere %}
+            <div class = "col-md-6">
+                    
+                <div class = "thumbnail">
+                    <img src = "{{hem.img_url}}" alt = "Hemisphere photo">
+                    <div class = "caption">
+                        <h3>{{hem.title}}</h3>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+        </div>
+    </div>  
+    
+</body>
+</html>
